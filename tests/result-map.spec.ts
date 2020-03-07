@@ -13,7 +13,7 @@ describe('Result Map', () => {
         const expected = 1;
         const resultMap: any = {};
       const results = await Promax.create(1)
-          .setResultsOutput(resultMap)
+          .setResultMapOutput(resultMap)
           .add(() => createPromiseFunction(expected))
           .run();
       expect(results[0]).toEqual(expected);
@@ -26,7 +26,7 @@ describe('Result Map', () => {
       const promiseFunctions = expected.map(value => () => createPromiseFunction(value));
       const resultMap: any = {};
       const results = await Promax.create(1)
-          .setResultsOutput(resultMap)
+          .setResultMapOutput(resultMap)
           .add(promiseFunctions)
           .run();
       expect(results).toEqual(expected);
