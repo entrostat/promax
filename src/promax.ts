@@ -167,6 +167,7 @@ export class Promax<T = any> {
           tap(result => {
             const index = this.indexMap.get(item);
             this.resultMap[index] = result;
+            this.results.valid.push(result);
           }),
         );
       }, this.limit),
@@ -177,5 +178,9 @@ export class Promax<T = any> {
       results.push(this.resultMap[i.toString()]);
     }
     return results;
+  }
+
+  public getResults() {
+    return this.results;
   }
 }

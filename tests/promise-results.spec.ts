@@ -50,4 +50,15 @@ describe('Promise Result Tests', () => {
       expect(results).toEqual(expected);
       done();
   });
+
+  it ('returns the result map correctly', async (done) => {
+      const expected = [1, 2, 3];
+      const promiseFunctions = expected.map(value => () => createPromiseFunction(value));
+      const promax = Promax.create(1).add(promiseFunctions);
+      await promax.run();
+      const resultMap = await promax.getResults();
+      expect(resultMap.valid).toEqual(expected);
+
+      done();
+  })
 });
