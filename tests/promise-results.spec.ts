@@ -38,4 +38,16 @@ describe('Promise Result Tests', () => {
       expect(results).toEqual(expected);
       done();
   });
+
+  it('resolves multiple promises with arguments correctly', async (done) => {
+      const expected = [1, 2, 3];
+      const promiseFunctions = expected.map(value => ({
+          func: createPromiseFunction,
+          args: [value]
+      }));
+      const promax = Promax.create(1).add(promiseFunctions);
+      const results = await promax.run();
+      expect(results).toEqual(expected);
+      done();
+  });
 });
