@@ -72,10 +72,10 @@ export class Promax<T = any> {
    * chain all of your commands together)
    * @param results
    */
-  public setResultsOutput(results: any): Promax {
+  public setResultsOutput(results: { valid?: any[], error?: any[] }): Promax {
     results.valid = [];
-    results.invalid = [];
-    this.results = results;
+    results.error = [];
+    this.results = results as any;
     return this;
   }
 
