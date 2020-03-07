@@ -1,0 +1,50 @@
+{
+  "name": "promax",
+  "version": "0.0.0",
+  "description": "A promise limiting/concurrency library that allows you to control how many promises are run at any given time.",
+  "main": "dist/index",
+  "types": "dist/index",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "release": "standard-version --sign",
+    "release:dry-run": "standard-version --dry-run",
+    "build": "rimraf dist && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/entrostat/promax.git"
+  },
+  "keywords": [
+    "async",
+    "await",
+    "concurrency",
+    "limit",
+    "limited",
+    "max",
+    "maximum",
+    "promise",
+    "promises",
+    "rate",
+    "rate-limit",
+    "ratelimit",
+    "throttle"
+  ],
+  "author": "Kerren Ortlepp",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/entrostat/promax/issues"
+  },
+  "homepage": "https://github.com/entrostat/promax#readme",
+  "devDependencies": {
+    "@types/jest": "^25.1.4",
+    "@types/node": "^13.9.0",
+    "jest": "^25.1.0",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.2",
+    "standard-version": "^7.1.0",
+    "ts-jest": "^25.2.1",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.8.3"
+  }
+}
