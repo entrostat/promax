@@ -10,7 +10,7 @@
     "release": "standard-version --sign",
     "release:dry-run": "standard-version --dry-run",
     "build": "rimraf dist && tsc",
-    "prepublish": "git checkout master && npm run build",
+    "prepublish": "npm run build",
     "test:ci": "npm run build && npm run test"
   },
   "repository": {
