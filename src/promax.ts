@@ -72,10 +72,11 @@ export class Promax<T = any> {
    * chain all of your commands together)
    * @param results
    */
-  public setResults(results: any) {
+  public setResultsOutput(results: any): Promax {
     results.valid = [];
     results.invalid = [];
     this.results = results;
+    return this;
   }
 
   public add(func: PromiseFunction<T>): Promax;
