@@ -21,4 +21,12 @@ describe('Promise Result Tests', () => {
       expect(results[0]).toBe(expected);
       done();
   });
+
+  it('resolves a single promise with args correctly', async (done) => {
+      const expected = 1;
+      const promax = Promax.create(1).add(createPromiseFunction, expected);
+      const results = await promax.run();
+      expect(results[0]).toBe(expected);
+      done();
+  });
 });
