@@ -1,4 +1,11 @@
 # promax
+
+[![NPM](https://nodei.co/npm/promax.png)](https://nodei.co/npm/promax/)
+
+[![GitHub version](https://badge.fury.io/gh/entrostat%2Fpromax.svg)](https://badge.fury.io/gh/entrostat%2Fpromax)
+[![npm version](https://badge.fury.io/js/promax.svg)](https://badge.fury.io/js/promax)
+[![Build Status](https://travis-ci.org/entrostat/promax.svg?branch=master)](https://travis-ci.org/entrostat/promax)
+
 Another promise limiter (adding concurrency to promises). This library uses rxjs to control concurrency, it also adds a little bit of extra functionality around how you get the results.
 
 
