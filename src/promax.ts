@@ -154,7 +154,8 @@ export class Promax<T = any> {
   public async run(): Promise<(T | ErrorResult<T>)[]> {
     const jobs = from(this.functions).pipe(
       mergeMap(item => {
-        return from(item.func(...item.args)).pipe(
+        const args = item.args || [];
+        return from(item.func(...args)).pipe(
           catchError(error => {
             const index = this.indexMap.get(item);
             const errorResult = new ErrorResult<T>(error, item.func, item.args);
