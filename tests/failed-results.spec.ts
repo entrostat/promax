@@ -26,4 +26,14 @@ describe('Failed Results', () => {
         done();
     });
 
+    it('populates the error key in the result map', async (done) => {
+        const expectedData = 1;
+        const promax = Promax.create(1, { throws: false }).add(() => createFailedPromiseFunction(expectedData));
+        const results = await promax.run();
+        const resultMap = promax.getResults();
+        expect(resultMap.error[0].data).toEqual(expectedData);
+        expect(resultMap.error.length).toEqual(1);
+        done();
+    })
+
 });
