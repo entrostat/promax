@@ -9,7 +9,8 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "release": "standard-version --sign",
     "release:dry-run": "standard-version --dry-run",
-    "build": "rimraf dist && tsc"
+    "build": "rimraf dist && tsc",
+    "prepublish": "git checkout master && npm run build"
   },
   "repository": {
     "type": "git",
