@@ -67,6 +67,18 @@ export class Promax<T = any> {
     return Object.assign({}, defaultPromiseLimitOptions, options);
   }
 
+  /**
+   * Allows you to set the results array by reference (if you want to
+   * chain all of your commands together)
+   * @param results
+   */
+  public setResultsOutput(results: any): Promax {
+    results.valid = [];
+    results.invalid = [];
+    this.results = results;
+    return this;
+  }
+
   public add(func: PromiseFunction<T>): Promax;
   public add(func: PromiseFunctionWithArgs<T>, ...args: any[]): Promax;
   // tslint:disable-next-line:unified-signatures

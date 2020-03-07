@@ -1,6 +1,6 @@
 {
   "name": "promax",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A promise limiting/concurrency library that allows you to control how many promises are run at any given time.",
   "main": "dist/index",
   "types": "dist/index",
@@ -9,7 +9,8 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "release": "standard-version --sign",
     "release:dry-run": "standard-version --dry-run",
-    "build": "rimraf dist && tsc"
+    "build": "rimraf dist && tsc",
+    "prepublish": "git checkout master && npm run build"
   },
   "repository": {
     "type": "git",
