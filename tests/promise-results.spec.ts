@@ -18,7 +18,7 @@ describe('Promise Result Tests', () => {
       const expected = 1;
       const promax = Promax.create(1).add(() => createPromiseFunction(expected));
       const results = await promax.run();
-      expect(results[0]).toBe(expected);
+      expect(results[0]).toEqual(expected);
       done();
   });
 
@@ -26,7 +26,16 @@ describe('Promise Result Tests', () => {
       const expected = 1;
       const promax = Promax.create(1).add(createPromiseFunction, expected);
       const results = await promax.run();
-      expect(results[0]).toBe(expected);
+      expect(results[0]).toEqual(expected);
+      done();
+  });
+
+  it('resolves multiple promises correctly', async (done) => {
+      const expected = [1, 2, 3];
+      const promiseFunctions = expected.map(value => () => createPromiseFunction(value));
+      const promax = Promax.create(1).add(promiseFunctions);
+      const results = await promax.run();
+      expect(results).toEqual(expected);
       done();
   });
 });

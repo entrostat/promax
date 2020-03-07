@@ -102,9 +102,7 @@ export class Promax<T = any> {
       // Array of single functions or functions with args
       for (const funcWithArguments of param1) {
         if (typeof funcWithArguments === 'function') {
-          this.functions.push({
-            func: funcWithArguments,
-          });
+          this.addFunction(funcWithArguments);
         } else {
           const func = funcWithArguments.func;
           const args = funcWithArguments.args;
@@ -176,7 +174,7 @@ export class Promax<T = any> {
     await jobs.toPromise();
     const results: T[] = [];
     for (let i = 0; i < this.functions.length; i++) {
-      results.push(this.resultMap[i]);
+      results.push(this.resultMap[i.toString()]);
     }
     return results;
   }
