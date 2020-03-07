@@ -19,4 +19,11 @@ describe('Failed Results', () => {
         done();
     });
 
+    it('throws by default if there is a rejected promise', async (done) => {
+        const expectedData = 1;
+        const promax = Promax.create(1).add(() => createFailedPromiseFunction(expectedData));
+        await expect(promax.run()).rejects.toEqual(expectedData);
+        done();
+    });
+
 });
