@@ -102,9 +102,7 @@ export class Promax<T = any> {
       // Array of single functions or functions with args
       for (const funcWithArguments of param1) {
         if (typeof funcWithArguments === 'function') {
-          this.functions.push({
-            func: funcWithArguments,
-          });
+          this.addFunction(funcWithArguments);
         } else {
           const func = funcWithArguments.func;
           const args = funcWithArguments.args;
@@ -154,7 +152,8 @@ export class Promax<T = any> {
   public async run(): Promise<(T | ErrorResult<T>)[]> {
     const jobs = from(this.functions).pipe(
       mergeMap(item => {
-        return from(item.func(...item.args)).pipe(
+        const args = item.args || [];
+        return from(item.func(...args)).pipe(
           catchError(error => {
             const index = this.indexMap.get(item);
             const errorResult = new ErrorResult<T>(error, item.func, item.args);
@@ -168,6 +167,7 @@ export class Promax<T = any> {
           tap(result => {
             const index = this.indexMap.get(item);
             this.resultMap[index] = result;
+            this.results.valid.push(result);
           }),
         );
       }, this.limit),
@@ -175,8 +175,12 @@ export class Promax<T = any> {
     await jobs.toPromise();
     const results: T[] = [];
     for (let i = 0; i < this.functions.length; i++) {
-      results.push(this.resultMap[i]);
+      results.push(this.resultMap[i.toString()]);
     }
     return results;
+  }
+
+  public getResults() {
+    return this.results;
   }
 }

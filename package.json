@@ -1,11 +1,11 @@
 {
   "name": "promax",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A promise limiting/concurrency library that allows you to control how many promises are run at any given time.",
   "main": "dist/index",
   "types": "dist/index",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "format": "prettier --write \"src/**/*.ts\"",
     "release": "standard-version --sign",
     "release:dry-run": "standard-version --dry-run",

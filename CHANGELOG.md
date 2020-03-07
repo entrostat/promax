@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/entrostat/promax/compare/v1.1.0...v1.2.0) (2020-03-07)
+
+
+### Features
+
+* **tests:** added initial unit tests for returned results ([b958719](https://github.com/entrostat/promax/commit/b958719d8e4c658b056c8f0343cf7c74cafa9b39))
+
+
+### Bug Fixes
+
+* **limiter:** didn't add all of the multiple functions to the result map ([d43a82d](https://github.com/entrostat/promax/commit/d43a82d92b77a52a484438b6aa8983a862057298))
+* **limiter:** need to set args to an empty array if there aren't any ([8a53dab](https://github.com/entrostat/promax/commit/8a53dab453cf959d656cd70514dd083ebe990f29))
+
 ## [1.1.0](https://github.com/entrostat/promax/compare/v1.0.0...v1.1.0) (2020-03-07)
 
 
