@@ -1,11 +1,11 @@
 import {Promax} from "../src";
 
 function createPromiseFunction(returns = null, timeout = 0) {
-    return new Promise(resolve => {
-        setTimeout(() => {
-            resolve(returns);
-        }, timeout);
-    });
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(returns);
+    }, timeout);
+  });
 }
 
 describe('Promise Result Tests', () => {
