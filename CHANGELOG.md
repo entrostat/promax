@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/entrostat/promax/compare/v1.3.0...v2.0.0) (2020-03-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* changed function names for better understandability
+
+### Features
+
+* **testing:** tested that result map by reference works ([1c4096d](https://github.com/entrostat/promax/commit/1c4096d4b0b85c937eb51bc39c8c198404d1113f))
+* **tests:** added testing for failed promises ([af337f5](https://github.com/entrostat/promax/commit/af337f584e4c5fb9240a92c4bbc695a188bba2e1))
+
+
+* updated the readme and renamed the functions for better understandibility ([abca280](https://github.com/entrostat/promax/commit/abca2801da9b0556d9db06204f2a5e85206f20ef))
+
 ## [1.3.0](https://github.com/entrostat/promax/compare/v1.2.0...v1.3.0) (2020-03-07)
 
 

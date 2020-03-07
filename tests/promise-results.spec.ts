@@ -1,11 +1,11 @@
 import {Promax} from "../src";
 
 function createPromiseFunction(returns = null, timeout = 0) {
-    return new Promise(resolve => {
-        setTimeout(() => {
-            resolve(returns);
-        }, timeout);
-    });
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(returns);
+    }, timeout);
+  });
 }
 
 describe('Promise Result Tests', () => {
@@ -56,7 +56,7 @@ describe('Promise Result Tests', () => {
       const promiseFunctions = expected.map(value => () => createPromiseFunction(value));
       const promax = Promax.create(1).add(promiseFunctions);
       await promax.run();
-      const resultMap = await promax.getResults();
+      const resultMap = await promax.getResultMap();
       expect(resultMap.valid).toEqual(expected);
 
       done();

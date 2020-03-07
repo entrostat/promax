@@ -72,10 +72,10 @@ export class Promax<T = any> {
    * chain all of your commands together)
    * @param results
    */
-  public setResultsOutput(results: any): Promax {
+  public setResultMapOutput(results: { valid?: any[], error?: any[] }): Promax {
     results.valid = [];
-    results.invalid = [];
-    this.results = results;
+    results.error = [];
+    this.results = results as any;
     return this;
   }
 
@@ -180,7 +180,7 @@ export class Promax<T = any> {
     return results;
   }
 
-  public getResults() {
+  public getResultMap() {
     return this.results;
   }
 }
