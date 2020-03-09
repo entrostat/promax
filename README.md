@@ -19,7 +19,9 @@ npm install --save promax
 
 ## Usage Instructions
 
-Once it's installed, you can use `Promax` to run your promises with a specified concurrency value. Pretend we had the following promise function:
+Once it's installed, you can use `Promax` to run your promises with a specified concurrency value. 
+
+Assume we have the following promise function:
 
 ```typescript
 function somePromiseFunction(returns = null, timeout = 0) {
@@ -31,7 +33,7 @@ function somePromiseFunction(returns = null, timeout = 0) {
 }
 ```
 
-Promax can be used in many ways:
+Promax is able to run this function concurrently in multiple ways:
 ```typescript
 import { Promax } from 'promax';
 
@@ -71,7 +73,7 @@ async function run() {
 }
 ```
 
-When it doesn't throw, it wraps errored results in an `ErrorResult` instance. Using `instanceof ErrorResult` will tell you whether or not there was an error in your array of results. Let's assume we have the following function:
+When it doesn't throw, it wraps errored results in an `ErrorResult` instance. Using `instanceof ErrorResult` will tell you whether or not there was an error in your array of results. Let's assume we have the following promise function which rejects:
 ```typescript
 function someFailingPromiseFunction(returns = 0, timeout = 0) {
     return new Promise((resolve, reject) => {
