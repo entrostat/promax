@@ -19,10 +19,12 @@ npm install --save promax
 
 ## Usage Instructions
 
-Once it's installed, you can use `Promax` to run your promises with a specified concurrency value. Pretend we had the following promise function:
+Once it's installed, you can use `Promax` to run your promises with a specified concurrency value. 
+
+Assume we have the following promise function:
 
 ```typescript
-function createPromiseFunction(returns = null, timeout = 0) {
+function somePromiseFunction(returns = null, timeout = 0) {
   return new Promise(resolve => {
     setTimeout(() => {
       resolve(returns);
@@ -31,7 +33,7 @@ function createPromiseFunction(returns = null, timeout = 0) {
 }
 ```
 
-Our code with `Promax` could be used in many ways:
+Promax is able to run this function concurrently in multiple ways:
 ```typescript
 import { Promax } from 'promax';
 
@@ -39,7 +41,7 @@ async function run() {
     const limit = 2;
     const expectedValues = [1, 2, 3];
     const promax = Promax.create(limit).add(
-        expectedValues.map(ev => () => createPromiseFunction(ev))
+        expectedValues.map(ev => () => somePromiseFunction(ev))
     );
     const results = await promax.run();
     // In this case, results == expectedValues
@@ -55,9 +57,9 @@ async function run() {
 }
 ```
 
-**NOTE:** In this case, we didn't change the settings at the start so if a promise is rejected, it'll throw and end the call.
+**NOTE:** In this case, if a promise is rejected, it'll throw an error and end the call.
 
-What if we don't want it do throw?
+If we don't want to throw an error, we can pass a parameter object with ```throws: false``` to the create function:
 ```typescript
 import { Promax } from 'promax';
 
@@ -65,15 +67,15 @@ async function run() {
     const limit = 2;
     const expectedValues = [1, 2, 3];
     const promax = Promax.create(limit, { throws: false }).add(
-        expectedValues.map(ev => () => createPromiseFunction(ev))
+        expectedValues.map(ev => () => somePromiseFunction(ev))
     );
     // ... same as previous example
 }
 ```
 
-When it doesn't throw, it wraps errored results in an `ErrorResult` instance. Using `insanceof ErrorResult` will tell you whether or not there was an error in your array of results. Let's assume we have the following function,
+When it doesn't throw, it wraps errored results in an `ErrorResult` instance. Using `instanceof ErrorResult` will tell you whether or not there was an error in your array of results. Let's assume we have the following promise function which rejects:
 ```typescript
-function createFailedPromiseFunction(returns = 0, timeout = 0) {
+function someFailingPromiseFunction(returns = 0, timeout = 0) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             reject(returns);
@@ -81,16 +83,16 @@ function createFailedPromiseFunction(returns = 0, timeout = 0) {
     });
 }
 ```
-Then we may get the following,
+Then we may get the following:
 ```typescript
 import { Promax } from 'promax';
 
 async function run() {
     const limit = 2;
     const promax = Promax.create(limit, { throws: false }).add([
-        () => createPromiseFunction(1),
-        () => createFailedPromiseFunction(2),
-        () => createPromiseFunction(3),
+        () => somePromiseFunction(1),
+        () => someFailingPromiseFunction(2),
+        () => somePromiseFunction(3),
     ]);
     const results = await promax.run();
     /**
@@ -127,7 +129,7 @@ async function run() {
     const limit = 2;
     const expectedValues = [1, 2, 3];
     const results = Promax.create(limit).add(
-        expectedValues.map(ev => () => createPromiseFunction(ev))
+        expectedValues.map(ev => () => somePromiseFunction(ev))
     ).run();
 }
 ```
@@ -143,7 +145,7 @@ async function run() {
     const results = Promax.create(limit)
         .setResultMapOutput(resultMap)
         .add(
-            expectedValues.map(ev => () => createPromiseFunction(ev))
+            expectedValues.map(ev => () => somePromiseFunction(ev))
         ).run();
     /**
      * In this case:
