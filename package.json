@@ -8,6 +8,7 @@
     "test": "jest",
     "format": "prettier --write \"src/**/*.ts\"",
     "release": "standard-version --sign",
+    "release:no-sign": "standard-version",
     "release:dry-run": "standard-version --dry-run",
     "build": "rimraf dist && tsc",
     "prepublish": "npm run build",
