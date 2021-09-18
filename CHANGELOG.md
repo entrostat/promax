@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/entrostat/promax/compare/v3.0.0...v3.1.0) (2021-09-18)
+
+
+### Features
+
+* **testing:** Switched testing to use Github Actions from Travis CI ([67c89f2](https://github.com/entrostat/promax/commit/67c89f238acd7773f2619f9e16cd3a9035c873e1))
+
 ## [3.0.0](https://github.com/entrostat/promax/compare/v2.0.2...v3.0.0) (2021-09-18)
 
 ### [2.0.2](https://github.com/entrostat/promax/compare/v2.0.1...v2.0.2) (2020-08-22)
