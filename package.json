@@ -1,6 +1,6 @@
 {
   "name": "promax",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "description": "A promise limiting/concurrency library that allows you to control how many promises are run at any given time.",
   "main": "dist/index",
   "types": "dist/index",
